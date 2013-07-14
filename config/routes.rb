@@ -1,4 +1,7 @@
 TeamProject::Application.routes.draw do
+  resources :events
+
+
   get "home/index"
 
   
