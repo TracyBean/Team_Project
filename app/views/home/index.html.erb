@@ -1,1 +1,22 @@
-<center><h1>EVENTS</h1></cemter>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Events</title>
+	<%= stylesheet_link_tag "application", :media => "all" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
+</head>
+<center><h1>EVENTS</h1></center>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="span9"><%= yield %></div>
+			<div class="span3">
+				<h2>About Us</h2>
+				This is a place where cool people can find fun things to do in Boston.
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
