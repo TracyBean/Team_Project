@@ -10,10 +10,12 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require foundation
+//= require gmaps4rails/gmaps4rails.base
+//= require gmaps4rails/gmaps4rails.googlemaps
+//= require gmaps4rails/gmaps4rails.mapquest
+//= require gmaps4rails/gmaps4rails.openlayers
+//= require gmaps4rails/gmaps4rails.bing
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
-
-$(function(){ $(document).foundation(); });
