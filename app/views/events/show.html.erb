@@ -6,19 +6,26 @@
 </p>
 
 <p>
+	<b>Address:</b>
+	<%= @event.address %>
+</p>
+
+<p>
   <b>Date:</b>
   <%= @event.date %>
 </p>
 
 <p>
   <b>Time:</b>
-  <%= @event.time %>
+  <%= @event.time.to_s(:time) %>
 </p>
 
 <p>
   <b>Description:</b>
   <%= @event.description %>
 </p>
+
+<%= gmaps4rails(@json) %>
 
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
