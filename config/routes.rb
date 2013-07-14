@@ -1,4 +1,6 @@
 TeamProject::Application.routes.draw do
+  get "home/welcome"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
