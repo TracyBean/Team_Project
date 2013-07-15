@@ -19,6 +19,8 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 
+  gem 'jquery-ui-rails'
+
 end
 
 gem 'jquery-rails'
@@ -28,6 +30,7 @@ gem 'geocoder'
 gem "therubyracer"
 gem "less-rails"
 gem 'twitter-bootstrap-rails'
+
 
 #gem 'geocoder'
 gem 'gmaps4rails'
