@@ -1,23 +1,69 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Events</title>
-	<%= stylesheet_link_tag "application", :media => "all" %>
+  <title>Events</title>
+  <!--Bootstrap-->
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 
-	<%= csrf_meta_tags %>
+  <style type="text/css">
+
+  .span12{
+    background: black;
+    color: white;
+    padding: 20px 0;
+    text-align: center; 
+}
+
+   .span6{
+     background: blue;
+     color: white;
+     padding: 20px 0;
+     text-align: center; 
+     margin-top: 15px;
+}
+
+  .span3{
+     background: purple  ;
+     color: white;
+     padding: 20px 0;
+     text-align: center; 
+     margin-top: 15px;
+}
+
+</style>
+
 </head>
-<center><h1>EVENTS</h1></center>
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="span9"><%= yield %></div>
-			<div class="span3">
-				<h2>About Us</h2>
-				This is a place where cool people can find fun things to do in Boston.
-			</div>
-		</div>
-	</div>
+
+  <div class="container"
+
+  <div class="row">
+
+    <div class="span12">span 12</div>
+
+  </div>
+
+  <div class="row">
+
+   <div class="span6">span 6</div>
+    <div class="span6">span 6</div>
+
+
+</div>
+
+ <div class="row">
+
+    <div class="span3">span 3</div>
+    <div class="span3">span 3</div>
+    <div class="span3">span 3</div>
+    <div class="span3">span 3</div>
+
+
+
+</div>
+
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
-
