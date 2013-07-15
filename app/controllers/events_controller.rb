@@ -18,6 +18,18 @@ class EventsController < ApplicationController
     
     @json = @event.to_gmaps4rails
 
+    @gmaps_options = {
+        "map_options" => {
+            "auto_zoom" => false,
+            "zoom" => 15,
+            "center_latitude" => @event.latitude,
+            "center_longitude" => @event.longitude
+    },
+    "markers" => {
+      "data" => @json
+    }
+    }
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @event }

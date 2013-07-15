@@ -11,11 +11,17 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 
+
+
+//= require gmaps4rails/gmaps4rails.base
+//= require gmaps4rails/gmaps4rails.googlemaps
+//= require gmaps4rails/gmaps4rails.mapquest
+//= require gmaps4rails/gmaps4rails.openlayers
+//= require gmaps4rails/gmaps4rails.bing
+
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.datepicker
 
 //= require twitter/bootstrap
 //= require_tree .
-
-
