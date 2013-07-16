@@ -5,63 +5,20 @@
   <!--Bootstrap-->
   <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 
-  <style type="text/css">
-
-  .span12{
-    background: black;
-    color: white;
-    padding: 20px 0;
-    text-align: center; 
-}
-
-   .span6{
-     background: blue;
-     color: white;
-     padding: 20px 0;
-     text-align: center; 
-     margin-top: 15px;
-}
-
-  .span3{
-     background: purple  ;
-     color: white;
-     padding: 20px 0;
-     text-align: center; 
-     margin-top: 15px;
-}
-
-</style>
+  
 
 </head>
 <body>
+<div class="container">
 
-  <div class="container"
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1>Events!</h1>
+        <p>This is a place for cool people to find fun things to do.</p>
+       <button>  <%= link_to 'Events', events_path %></button>
+      </div>
 
-  <div class="row">
-
-    <div class="span12">span 12</div>
-
-  </div>
-
-  <div class="row">
-
-   <div class="span6">span 6</div>
-    <div class="span6">span 6</div>
-
-
-</div>
-
- <div class="row">
-
-    <div class="span3">span 3</div>
-    <div class="span3">span 3</div>
-    <div class="span3">span 3</div>
-    <div class="span3">span 3</div>
-
-
-
-</div>
-
+    
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="js/bootstrap.min.js"></script>
