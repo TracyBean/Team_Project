@@ -1,3 +1,7 @@
+
+
+
+
 <div class="navbar navbar-inverse">
   <div class="navbar-inner">
     <div class="container">
@@ -10,10 +14,10 @@
       </a>
  
       <!-- Be sure to leave the brand out there if you want it shown -->
-     <a class="brand" href="#">Events</a>
+     <a class="brand" href="/events">Events</a>
        <ul class="nav">
       <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
+      <li><a href="/">About</a></li>
       <li><a href="#">Contact</a></li>
     </ul>
  
@@ -26,24 +30,49 @@
   </div>
 </div>
 
-  <div class="span9">
-          <div class="hero-unit">
-            <h1>Welcome to "Cool Things To Do In Boston"</h1>
-            <p>This is where cool people come for fun things to do in Boston.</p>
-            <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+
+<div class="modal-body">
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="span6">
+            <div class="logowrapper">
+                <img class="logoicon" src="http://placehold.it/300x300/bbb/&text=Your%20Logo" alt="App Logo"/>
+            </div>
+            </div>
+
+
+        <div class="homeWhere">
+          <h3>
+         
+            <input id="location" type="text" placeholder="ex : Boston" class="large" value="Washington" />
+          </h3>
+
+              <div class="row action">
+          <div class="span4 offset4">
+            <a class="btn primary large" onclick="submitMainForm(false);">Outdoor</a>
+            
           </div>
-          
-            </div><!--/span-->
+          <div class="span4">
+            <a class="btn primary large" onclick="submitMainForm(true);">Indoor</a>
+           
+          </div>
+        </div>
+
+      
 
 
-<!DOCTYPE html>
-<html>
+
+       
+
+
+
+
+           
+  
 <head>
   <title>Events</title>
   <!--Bootstrap-->
   <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-
-  
 
 
     
@@ -51,4 +80,8 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>
-</html>
+
+
+
+
+
