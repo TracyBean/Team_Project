@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
-  attr_accessible :date, :description, :name, :address, :time, :latitude, :longitude
+  attr_accessible :date, :description, :name, :address, :time, :latitude, :longitude, :category_ids
+  has_and_belongs_to_many :categories
 
   #geocoded_by :address
   #after_validation :geocode
@@ -17,4 +18,3 @@ class Event < ActiveRecord::Base
   end
 
 end
-

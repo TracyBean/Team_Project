@@ -6,6 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+["Art", "Classes", "Music", "Comedy", "Theater"].each do |category|
+    Category.find_or_create_by_name(category)
+end
 
 events = Event.create([
     { name: 'Boston - Art, Wine & Art Exhibit - Ages 22-45',

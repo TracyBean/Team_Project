@@ -23,6 +23,10 @@ group :assets do
 
 end
 
+group :development do
+    gem 'pry-rails'
+end
+
 gem 'jquery-rails'
 
 
