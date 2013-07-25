@@ -37,12 +37,13 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @events.each do |event| %>
   <tr>
     <td><%= event.name %></td>
-    <td><%= event.date %></td>
+    <td><%= event.time.to_s(:date) %></td>
     <td><%= event.time.to_s(:time) %></td>
     <td><%= event.description %></td>
     <td><%= link_to 'Show', event %></td>
