@@ -1,6 +1,12 @@
 class Event < ActiveRecord::Base
   attr_accessible :date, :description, :name, :address, :time, :latitude, :longitude
 
+   searchable do
+    text :title, :default_boost => 2
+    text :body
+  end
+end
+
   #geocoded_by :address
   #after_validation :geocode
 
@@ -16,5 +22,5 @@ class Event < ActiveRecord::Base
   	"#{self.address}"
   end
 
-end
+
 
