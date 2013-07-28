@@ -47,7 +47,8 @@ end
 #gem 'geocoder'
 gem 'gmaps4rails'
 gem 'yelpster'
-gem 'grape'
+gem 'eventbrite-client'
+#gem 'grape'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

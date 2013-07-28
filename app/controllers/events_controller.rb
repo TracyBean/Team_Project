@@ -6,9 +6,11 @@ class EventsController < ApplicationController
   # GET /events.json
 
   def index
-    #@events = Event.all
-    #@yelpjson = Yelpfinder.new("burritos").fetch
-    @events = Yelpfinder.new("vinyl").fetch_and_generate_events
+    @events = Yelpfinder.new("improv").fetch_and_generate_events
+    Eventbritefinder.new("improv").fetch_and_generate_events.each do |event|
+        @events << event
+    end
+
 
     respond_to do |format|
       format.html # index.html.erb
