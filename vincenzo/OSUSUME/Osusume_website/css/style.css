@@ -1,0 +1,32 @@
+
+/* Styling the music navigation choices */
+li {
+    display: inline-block;
+
+    padding: 20px;
+    margin: 10px;
+
+    background-color: #C9C9C9;
+    border-radius: 18px;
+}
+
+/* I can't figure out why this isn't centering everything*/
+
+* {
+	margin:auto;
+}
+
+/* color guide 
+
+website
+
+yellow in header #F2F27E
+blue in footer #9FEDFF
+logo dark grey #5B5A5B
+logo o orange #F4350F
+choose icon grey #C9C9C9
+event date tag grey #C9C9C9
+event background grey #E6E6E6  */
+
+
+
