@@ -1,43 +1,39 @@
-class Eventbritefinder
+class Meetupfinder
     require 'json'
-    require 'eventbrite-client'
+    require 'meetup_client'
 
     
     attr_accessor :data, :events
     
     def initialize search_term
         @search_term = search_term
+        @meetup_api = MeetupApi.new
     end
 
     def fetch
-        eb_auth_tokens = { app_key: ENV["EVENTBRITE_APP_KEY"] }
-        eb_client = EventbriteClient.new(eb_auth_tokens)
+        topicparams = { search: @search_term, order: 'members', format: 'json', page: '20'}
+        debugger
+        @topics = @meetup_api.topics(topicparams)
+        @data = []
+        @biggertopics = []
+        @topics.each do |topic|
+            if topic["members"] > 250
+                @biggertopics << topic
+            end
+        end
 
-        begin
-            response = eb_client.event_search({
-                keywords: @search_term,
-                city: "Boston",
-                region: "MA",
-                within: 15,
-                date: "This week"
-            })
-        rescue RuntimeError
-            @data = nil
-            return
+        @biggertopics.each do |topic|
+           @data << RMeetup::Client.fetch(:events,{
+           :topic => topic.urlkey,
+           :zip => '02139',
+           :order => 'trending',
+           :desc => 'true'})
         end
-        
-        unless response["error"].present?
-            @data = response
-        end
+        debugger
     end
     
     def generate_events
         @events = []
-        
-        if @data.nil?
-            return @events
-        end
-
         @data["events"].each do |item|
             if not item["event"].nil? then
                 eventfromitem = Event.find_or_create_by_name(
@@ -45,8 +41,7 @@ class Eventbritefinder
                     :description => ActionController::Base.helpers.strip_tags(item["event"]["description"]),
                     :address => [item["event"]["venue"]["address"], item["event"]["venue"]["city"], item["event"]["venue"]["region"], item["event"]["venue"]["postal_code"]].reject(&:empty?).join(' '),
                     :time => item["event"]["start_date"],
-                    :url => item["event"]["url"],
-                    :source => "eventbrite"
+                    :url => item["event"]["url"]
                 )
                 eventfromitem.save!
                 @events.push(eventfromitem)

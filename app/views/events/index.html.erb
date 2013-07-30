@@ -28,13 +28,13 @@
 
 <h1>Listing events</h1>
 
-<table>
+<table class="table table-striped">
   <tr>
     <th>Name</th>
     <th>Date</th>
     <th>Time</th>
     <th>Description</th>
-    <th></th>
+    <th>Link</th>
     <th></th>
     <th></th>
     <th></th>
@@ -46,7 +46,14 @@
     <td><%= event.time.to_s(:date) %></td>
     <td><%= event.time.to_s(:time) %></td>
     <td><%= event.description %></td>
-    <td><%= link_to image_tag("http://s3-media3.ak.yelpcdn.com/assets/2/www/img/3049d7633b6e/developers/reviewsFromYelpRED.gif"), event.url %></td>
+    <td>
+    <% if event.source == "yelp" %>
+        <%= link_to image_tag("http://s3-media3.ak.yelpcdn.com/assets/2/www/img/3049d7633b6e/developers/reviewsFromYelpRED.gif"), event.url %>
+    <% end %>
+    <% if event.source == "eventbrite" %>
+        <%= link_to image_tag("http://eventbrite-s3.s3.amazonaws.com/static/images/developer/logo/orange.png", :size => "115x25"), event.url %>
+    <% end %>
+    </td>
     <td><%= link_to 'Show', event %></td>
     <td><%= link_to 'Edit', edit_event_path(event) %></td>
     <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>

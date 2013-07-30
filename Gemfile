@@ -48,6 +48,9 @@ end
 gem 'gmaps4rails'
 gem 'yelpster'
 gem 'eventbrite-client'
+#gem 'rMeetup'
+gem 'meetup_client', '~> 0.0.6'
+gem 'koala'
 #gem 'grape'
 
 # To use ActiveModel has_secure_password

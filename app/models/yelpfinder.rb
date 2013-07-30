@@ -32,7 +32,8 @@ class Yelpfinder
                 :description => item["snippet_text"],
                 :address => [item["location"]["address"], item["location"]["city"], item["location"]["state_code"], item["location"]["postal_code"]].reject(&:empty?).join(' '),
                 :time => Time.now,
-                :url => item["url"]
+                :url => item["url"],
+                :source => "yelp"
             )
             eventfromitem.save!
             @events.push(eventfromitem)
