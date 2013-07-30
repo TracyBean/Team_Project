@@ -2,6 +2,12 @@ class Event < ActiveRecord::Base
   attr_accessible :date, :description, :name, :address, :time, :latitude, :longitude, :category_ids, :url, :source
   has_and_belongs_to_many :categories
 
+   searchable do
+    text :title, :default_boost => 2
+    text :body
+  end
+end
+
   #geocoded_by :address
   #after_validation :geocode
 
@@ -17,4 +23,9 @@ class Event < ActiveRecord::Base
   	"#{self.address}"
   end
 
+<<<<<<< HEAD
+
+
+=======
 end
+>>>>>>> b7fd615935f4f604a18e804e2421156285ba7288
