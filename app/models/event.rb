@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
-  attr_accessible :date, :description, :name, :address, :time, :latitude, :longitude
+  attr_accessible :date, :description, :name, :address, :time, :latitude, :longitude, :category_ids, :url
+  has_and_belongs_to_many :categories
 
    searchable do
     text :title, :default_boost => 2
@@ -22,5 +23,9 @@ end
   	"#{self.address}"
   end
 
+<<<<<<< HEAD
 
 
+=======
+end
+>>>>>>> b7fd615935f4f604a18e804e2421156285ba7288

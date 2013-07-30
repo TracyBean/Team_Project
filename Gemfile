@@ -25,6 +25,11 @@ group :assets do
 
 end
 
+group :development do
+    gem 'pry-rails'
+    gem 'debugger'
+end
+
 gem 'jquery-rails'
 
 
@@ -33,10 +38,18 @@ gem "therubyracer"
 gem "less-rails"
 gem 'twitter-bootstrap-rails'
 
+gem "rspec-rails", :group => [:test, :development]
+group :test do
+    gem "factory_girl_rails"
+    gem "capybara"
+    #gem "guard-rspec"
+end
+
 
 #gem 'geocoder'
 gem 'gmaps4rails'
-
+gem 'yelpster'
+gem 'grape'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

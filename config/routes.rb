@@ -1,6 +1,9 @@
 TeamProject::Application.routes.draw do
+  resources :categories
+
   resources :events
 
+  resources :yelpfinders
 
   get "home/index"
 

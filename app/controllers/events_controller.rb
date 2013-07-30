@@ -1,9 +1,14 @@
 class EventsController < ApplicationController
+    require 'json'
+
+    
   # GET /events
   # GET /events.json
 
   def index
-    @events = Event.all
+    #@events = Event.all
+    #@yelpjson = Yelpfinder.new("burritos").fetch
+    @events = Yelpfinder.new("vinyl").fetch_and_generate_events
 
     respond_to do |format|
       format.html # index.html.erb
