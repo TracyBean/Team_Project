@@ -23,9 +23,5 @@ end
   	"#{self.address}"
   end
 
-<<<<<<< HEAD
 
 
-=======
-end
->>>>>>> b7fd615935f4f604a18e804e2421156285ba7288
