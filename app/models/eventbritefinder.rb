@@ -51,9 +51,11 @@ class Eventbritefinder
                         :event_time => item["event"]["start_date"],
                         :url => item["event"]["url"],
                         :source => "eventbrite"
-                    )
-                    eventfromitem.save!
-                    @events.push(eventfromitem)
+                    ) do |e|
+                        e.save!
+                        @events.push(e)
+                    end
+
                 end
             end
         end

@@ -24,24 +24,26 @@ class Meetupfinder
         @data.each do |response|
             response["results"].each do |item|
                 if not item["id"].nil? then
-                    eventfromitem = Event.find_or_create_by_name(
+                    eventfromitem = Event.find_or_create_by_url(
                         :name => item["name"],
                         :description => item["description"],
                         :event_time => Time.at((item["time"]+item["utc_offset"])/1000),
                         :url => item["event_url"],
                         :source => "meetup"
-                    )
-                    unless item["venue"].nil?
-                        eventfromitem.update_attributes(:address => [item["venue"]["address_1"].to_s, item["venue"]["city"].to_s, item["venue"]["state"].to_s, item["venue"]["zip"].to_s].reject(&:empty?).join(' '))
-                    end
+                    ) do |e|
 
-                    if item["venue"].nil? and not item["group"]["group_lat"].nil? then
-                        eventfromitem.update_attributes(:latitude => item["group"]["group_lat"])
-                        eventfromitem.update_attributes(:longitude => item["group"]["group_lon"])
-                    end
+                        unless item["venue"].nil?
+                            e.update_attributes(:address => [item["venue"]["address_1"].to_s, item["venue"]["city"].to_s, item["venue"]["state"].to_s, item["venue"]["zip"].to_s].reject(&:empty?).join(' '))
+                        end
 
-                    eventfromitem.save!
-                    @events.push(eventfromitem)
+                        if item["venue"].nil? and not item["group"]["group_lat"].nil? then
+                            e.update_attributes(:latitude => item["group"]["group_lat"])
+                            e.update_attributes(:longitude => item["group"]["group_lon"])
+                        end
+
+                        e.save!
+                        @events.push(e)
+                    end
                 end
             end
         end
