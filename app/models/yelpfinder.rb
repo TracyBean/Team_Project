@@ -31,14 +31,15 @@ class Yelpfinder
         @events = []
         @data.each do |response|
             response["businesses"].each do |item|
-                eventfromitem = Event.find_or_create_by_url(
+                eventfromitem = Event.find_or_create_by_url_and_score(
                     :name => item["name"],
                     :description => item["snippet_text"],
                     :address => [item["location"]["address"], item["location"]["city"], item["location"]["state_code"], item["location"]["postal_code"]].reject(&:empty?).join(' '),
                     :event_time => Time.now,
                     :url => item["url"],
-                    :source => "yelp"
-                ) do |e|
+                    :source => "yelp",
+                    :score => (8*item["review_count"]*item["rating"])/625
+                 ) do |e|
                     e.save!
                     @events.push(e)
                 end

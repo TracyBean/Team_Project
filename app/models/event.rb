@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :date, :description, :name, :address, :event_time, :latitude, :longitude, :category_ids, :url, :source
+  attr_accessible :date, :description, :name, :address, :event_time, :latitude, :longitude, :category_ids, :url, :source, :score
   has_and_belongs_to_many :categories
 
    #searchable do

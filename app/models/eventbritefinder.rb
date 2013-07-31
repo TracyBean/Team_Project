@@ -33,6 +33,10 @@ class Eventbritefinder
             end
         end
     end
+
+    def score_or_zero(x)
+        x.blank? ? 0 : x/15
+    end
     
     def generate_events
         @events = []
@@ -44,13 +48,14 @@ class Eventbritefinder
         @data.each do |response|
             response["events"].each do |item|
                 if not item["event"].nil? then
-                    eventfromitem = Event.find_or_create_by_name(
+                    eventfromitem = Event.find_or_create_by_url_and_score(
                         :name => item["event"]["title"],
                         :description => ActionController::Base.helpers.strip_tags(item["event"]["description"]),
                         :address => [item["event"]["venue"]["address"], item["event"]["venue"]["city"], item["event"]["venue"]["region"], item["event"]["venue"]["postal_code"]].reject(&:empty?).join(' '),
                         :event_time => item["event"]["start_date"],
                         :url => item["event"]["url"],
-                        :source => "eventbrite"
+                        :source => "eventbrite",
+                        :score => score_or_zero(item["event"]["num_attendee_rows"])
                     ) do |e|
                         e.save!
                         @events.push(e)

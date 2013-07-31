@@ -13,7 +13,7 @@ class Meetupfinder
     def fetch
         @data = []
         @search_terms.each do |term|
-            params = { search: @search_term, order: 'trending', zip: '02139', desc: 'true', format: 'json', page: '20'}
+            params = { search: @search_term, order: 'trending', zip: '02139', desc: 'true', format: 'json', page: '20', fields: "trending_rank"}
             @data << @meetup_api.open_events(params)
             #debugger
         end
@@ -24,12 +24,13 @@ class Meetupfinder
         @data.each do |response|
             response["results"].each do |item|
                 if not item["id"].nil? then
-                    eventfromitem = Event.find_or_create_by_url(
+                    eventfromitem = Event.find_or_create_by_url_and_score(
                         :name => item["name"],
                         :description => item["description"],
                         :event_time => Time.at((item["time"]+item["utc_offset"])/1000),
                         :url => item["event_url"],
-                        :source => "meetup"
+                        :source => "meetup",
+                        :score => (1-item["trending_rank"])/10 + item["yes_rsvp_count"]/10 + item["maybe_rsvp_count"]/15
                     ) do |e|
 
                         unless item["venue"].nil?
