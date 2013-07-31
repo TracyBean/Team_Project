@@ -6,11 +6,11 @@ class EventsController < ApplicationController
   # GET /events.json
 
   def index
-      @yelp_search_term = "Japanese"
-      @eb_search_term = "startups"
+      @yelp_search_terms = ["Japanese", "sushi"]
+      @eb_search_terms = ["startups", "technology", "venture"]
       @meetup_search_term = "Python"
-      @events = Yelpfinder.new(@yelp_search_term).fetch_and_generate_events
-      Eventbritefinder.new(@eb_search_term).fetch_and_generate_events.each do |event|
+      @events = Yelpfinder.new(@yelp_search_terms).fetch_and_generate_events
+      Eventbritefinder.new(@eb_search_terms).fetch_and_generate_events.each do |event|
           @events << event
       end
       Meetupfinder.new(@meetup_search_term).fetch_and_generate_events.each do |event|
