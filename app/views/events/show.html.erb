@@ -44,12 +44,12 @@
 
 <p>
   <b>Date:</b>
-  <%= @event.date %>
+  <%= @event.event_time.strftime("%A, %B %d, %Y") %>
 </p>
 
 <p>
   <b>Time:</b>
-  <%= @event.time.to_s(:time) %>
+  <%= @event.event_time.strftime("%H:%M") %>
 </p>
 
 <p>

@@ -44,7 +44,7 @@ class Eventbritefinder
                     :name => item["event"]["title"],
                     :description => ActionController::Base.helpers.strip_tags(item["event"]["description"]),
                     :address => [item["event"]["venue"]["address"], item["event"]["venue"]["city"], item["event"]["venue"]["region"], item["event"]["venue"]["postal_code"]].reject(&:empty?).join(' '),
-                    :time => item["event"]["start_date"],
+                    :event_time => item["event"]["start_date"],
                     :url => item["event"]["url"],
                     :source => "eventbrite"
                 )

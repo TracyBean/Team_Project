@@ -11,38 +11,32 @@ class Meetupfinder
     end
 
     def fetch
-        topicparams = { search: @search_term, order: 'members', format: 'json', page: '20'}
-        debugger
-        @topics = @meetup_api.topics(topicparams)
-        @data = []
-        @biggertopics = []
-        @topics.each do |topic|
-            if topic["members"] > 250
-                @biggertopics << topic
-            end
-        end
-
-        @biggertopics.each do |topic|
-           @data << RMeetup::Client.fetch(:events,{
-           :topic => topic.urlkey,
-           :zip => '02139',
-           :order => 'trending',
-           :desc => 'true'})
-        end
-        debugger
+        params = { search: @search_term, order: 'trending', zip: '02139', desc: 'true', format: 'json', page: '20'}
+        @data = @meetup_api.open_events(params)
+        #debugger
+        
     end
     
     def generate_events
         @events = []
-        @data["events"].each do |item|
-            if not item["event"].nil? then
+        @data["results"].each do |item|
+            if not item["id"].nil? then
                 eventfromitem = Event.find_or_create_by_name(
-                    :name => item["event"]["title"],
-                    :description => ActionController::Base.helpers.strip_tags(item["event"]["description"]),
-                    :address => [item["event"]["venue"]["address"], item["event"]["venue"]["city"], item["event"]["venue"]["region"], item["event"]["venue"]["postal_code"]].reject(&:empty?).join(' '),
-                    :time => item["event"]["start_date"],
-                    :url => item["event"]["url"]
+                    :name => item["name"],
+                    :description => item["description"],
+                    :event_time => Time.at((item["time"]+item["utc_offset"])/1000),
+                    :url => item["event_url"],
+                    :source => "meetup"
                 )
+                unless item["venue"].nil?
+                    eventfromitem.update_attributes(:address => [item["venue"]["address_1"].to_s, item["venue"]["city"].to_s, item["venue"]["state"].to_s, item["venue"]["zip"].to_s].reject(&:empty?).join(' '))
+                end
+
+                if item["venue"].nil? and not item["group"]["group_lat"].nil? then
+                    eventfromitem.update_attributes(:latitude => item["group"]["group_lat"])
+                    eventfromitem.update_attributes(:longitude => item["group"]["group_lon"])
+                end
+
                 eventfromitem.save!
                 @events.push(eventfromitem)
             end

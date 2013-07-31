@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130730130915) do
+ActiveRecord::Schema.define(:version => 20130731043947) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -26,8 +26,6 @@ ActiveRecord::Schema.define(:version => 20130730130915) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
-    t.date     "date"
-    t.time     "time"
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
@@ -37,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20130730130915) do
     t.boolean  "gmaps"
     t.string   "url"
     t.string   "source"
+    t.datetime "event_time"
   end
 
   create_table "yelpfinders", :force => true do |t|
