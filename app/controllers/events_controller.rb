@@ -8,12 +8,12 @@ class EventsController < ApplicationController
   def index
       @yelp_search_terms = ["Japanese", "sushi"]
       @eb_search_terms = ["startups", "technology", "venture"]
-      @meetup_search_term = "Python"
+      @meetup_search_terms = ["Python", "ruby"]
       @events = Yelpfinder.new(@yelp_search_terms).fetch_and_generate_events
       Eventbritefinder.new(@eb_search_terms).fetch_and_generate_events.each do |event|
           @events << event
       end
-      Meetupfinder.new(@meetup_search_term).fetch_and_generate_events.each do |event|
+      Meetupfinder.new(@meetup_search_terms).fetch_and_generate_events.each do |event|
           @events << event
       end
 
