@@ -29,7 +29,7 @@ class Meetupfinder
                         :event_time => Time.at((item["time"]+item["utc_offset"])/1000),
                         :url => item["event_url"],
                         :source => "meetup",
-                        :score => 10-(item["trending_rank"])/10 + item["yes_rsvp_count"]/10 + item["maybe_rsvp_count"]/15
+                        :score => 10-(item["trending_rank"])/10 + item["yes_rsvp_count"]/5 + item["maybe_rsvp_count"]/10
                     ) do |e|
 
                         unless item["venue"].nil?

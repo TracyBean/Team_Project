@@ -135,7 +135,7 @@
 
 
 
-        <p>This is a recommendation site for cool people. </p>
+        <p> </p>
 
 
 
@@ -156,25 +156,25 @@
 
   <body>
 
-
+  <% debugger %>
        <div class="row">
          <div class="span3">
-       <%= link_to image_tag("anythingelse.gif"), home_tv_path %>
+       <%= link_to image_tag("anythingelse.gif"), :controller => 'home', :action => "tv", :movie => 'Anything Else' %>
         </div>
       
 
 
          <div class="span3">
-       <%= link_to image_tag("phantom.gif"), home_tv_path %>
+       <%= link_to image_tag("phantom.gif"), :controller => 'home', :action => "tv", :movie => 'Phantom of the Opera'  %>
          
         </div>
 
         <div class="span3">
-           <%= link_to image_tag("spirited.gif"), home_tv_path %>
+           <%= link_to image_tag("spirited.gif"), :controller => 'home', :action => "tv", :movie => 'Spirited Away' %>
         </div>
 
         <div class="span3">
-       <%= link_to image_tag("skyfall.gif"), home_tv_path %>
+       <%= link_to image_tag("skyfall.gif"), :controller => 'home', :action => "tv", :movie => 'Skyfall' %>
         </div>
         
         <script>

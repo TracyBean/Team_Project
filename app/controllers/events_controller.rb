@@ -1,13 +1,18 @@
 class EventsController < ApplicationController
     require 'json'
 
+    before_filter :get_profile, :only => :index
+    def get_profile
+        @profile = Profile.first.blank? ? Profile.new : Profile.first
+    end
+ 
     
   # GET /events
   # GET /events.json
 
   def index
-      tv = params[:tv]
-      if(tv == 'Friends')
+      @profile.tv = params[:tv]
+      if(@profile.tv == 'Friends')
           @yelp_search_terms = ["Friends"]
       else
           @yelp_search_terms = ["programming", "weird", "weirdo", "bookstore", "harvard", "jazz"]

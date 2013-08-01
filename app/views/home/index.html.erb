@@ -156,26 +156,25 @@
   <body>
        <div class="row">
          <div class="span3" id="Daft Punk">
-       <%= link_to image_tag("daftpunk.gif"), home_drinks_path %>
+       <%= link_to image_tag("daftpunk.gif"), :controller => 'home', :action => "drinks", :music => 'Daft Punk' %>
        </div>
 
          <div class="span3" id="Spice Girls">
-       <%= link_to image_tag("spicegirls.gif"), home_drinks_path %>
+       <%= link_to image_tag("spicegirls.gif"), :controller => 'home', :action => "drinks", :music => 'Spice Girls' %>
         </div>
 
         <div class="span3" id="Notorious B.I.G.">
-         <%= link_to image_tag("biggiesmalls.gif"), home_drinks_path %>
+         <%= link_to image_tag("biggiesmalls.gif"), :controller => 'home', :action => "drinks", :music => 'Notorious B.I.G.'  %>
         </div>
 
         <div class="span3" id="Nicki Minaj">
-         <%= link_to image_tag("nickiminaj.gif"), home_drinks_path %>
+         <%= link_to image_tag("nickiminaj.gif"), :controller => 'home', :action => "drinks", :music => 'Nicki Minaj'  %>
         </div>
         
         
         <script>
             $( ".span3" ).click(function() {
                 var src = $(this).attr('id')
-                alert("You clicked "+src)
             });
         </script>
 

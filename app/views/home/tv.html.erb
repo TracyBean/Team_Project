@@ -160,15 +160,15 @@
        </div>
 
          <div class="span3" id="Game of Thrones">
-          <img src="<%= asset_path("gameofthrones.gif"), :controller => 'events', :action => "index", :tv => 'Game of Thrones'  %>">
+           <%= link_to image_tag("gameofthrones.gif"), :controller => 'events', :action => "index", :tv => 'Game of Thrones'  %>
         </div>
 
         <div class="span3" id="Sex and the City">
-          <img src="<%= asset_path("sandthecity.gif"), :controller => 'events', :action => "index", :tv => 'Sex and the City'  %>">
+           <%= link_to image_tag("sandthecity.gif"), :controller => 'events', :action => "index", :tv => 'Sex and the City'  %>
         </div>
 
         <div class="span3" id="Mad Men">
-          <img src="<%= asset_path("madmen.gif"), :controller => 'events', :action => "index", :tv => 'Mad Men'  %>">
+           <%= link_to image_tag("madmen.gif"), :controller => 'events', :action => "index", :tv => 'Mad Men'  %>
         </div>
 
         <script>
