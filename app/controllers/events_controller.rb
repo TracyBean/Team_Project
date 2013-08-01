@@ -6,9 +6,9 @@ class EventsController < ApplicationController
   # GET /events.json
 
   def index
-      @yelp_search_terms = ["technology", "sushi"]
-      @eb_search_terms = ["startups", "technology", "entrepreneurship"]
-      @meetup_search_terms = ["Python", "ruby"]
+      @yelp_search_terms = ["programming", "weird", "weirdo", "bookstore", "harvard", "jazz"]
+      @eb_search_terms = ["programming%20OR%20startup%20OR%20mathematics"]
+      @meetup_search_terms = ["indie+jazz+philosophy+physics"]
       @events = Yelpfinder.new(@yelp_search_terms).fetch_and_generate_events
       Eventbritefinder.new(@eb_search_terms).fetch_and_generate_events.each do |event|
           @events << event

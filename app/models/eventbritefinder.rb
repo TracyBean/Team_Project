@@ -22,11 +22,12 @@ class Eventbritefinder
                     city: "Boston",
                     region: "MA",
                     within: 15,
-                    date: "This week"
+                    date: "August"
                 })
                 unless (!defined? reponse || response["error"].present?)
                     @data << response
                 end
+                debugger
 
             rescue RuntimeError
                 next

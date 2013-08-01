@@ -38,7 +38,7 @@ class Yelpfinder
                     :event_time => Time.now,
                     :url => item["url"],
                     :source => "yelp",
-                    :score => (8*item["review_count"]*item["rating"])/625
+                    :score => (item["review_count"]*item["rating"])/120
                  ) do |e|
                     e.save!
                     @events.push(e)
