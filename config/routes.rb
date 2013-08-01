@@ -1,4 +1,10 @@
 TeamProject::Application.routes.draw do
+  get "home/tv"
+
+  get "home/movies"
+
+  get "home/drinks"
+
   resources :categories
 
   resources :events
