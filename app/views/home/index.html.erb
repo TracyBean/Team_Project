@@ -134,7 +134,7 @@
 
 
 
-        <p>This is a recommendation site for cool people. </p>
+        <p></p>
 
 
 
@@ -155,31 +155,30 @@
 
   <body>
        <div class="row">
-         <div class="span3">
+         <div class="span3" id="Daft Punk">
        <%= link_to image_tag("daftpunk.gif"), home_drinks_path %>
        </div>
 
-         <div class="span3">
+         <div class="span3" id="Spice Girls">
        <%= link_to image_tag("spicegirls.gif"), home_drinks_path %>
         </div>
 
-        <div class="span3">
+        <div class="span3" id="Notorious B.I.G.">
          <%= link_to image_tag("biggiesmalls.gif"), home_drinks_path %>
         </div>
 
-        <div class="span3">
+        <div class="span3" id="Nicki Minaj">
          <%= link_to image_tag("nickiminaj.gif"), home_drinks_path %>
         </div>
+        
+        
+        <script>
+            $( ".span3" ).click(function() {
+                var src = $(this).attr('id')
+                alert("You clicked "+src)
+            });
+        </script>
+
       </body>
+</html>
 
-     
-
- 
-
-
-
-          
-
-
-
-          

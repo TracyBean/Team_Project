@@ -6,7 +6,12 @@ class EventsController < ApplicationController
   # GET /events.json
 
   def index
-      @yelp_search_terms = ["programming", "weird", "weirdo", "bookstore", "harvard", "jazz"]
+      tv = params[:tv]
+      if(tv == 'Friends')
+          @yelp_search_terms = ["Friends"]
+      else
+          @yelp_search_terms = ["programming", "weird", "weirdo", "bookstore", "harvard", "jazz"]
+      end
       @eb_search_terms = ["programming%20OR%20startup%20OR%20mathematics"]
       @meetup_search_terms = ["indie+jazz+philosophy+physics"]
       @events = Yelpfinder.new(@yelp_search_terms).fetch_and_generate_events

@@ -1,4 +1,8 @@
 class HomeController < ApplicationController
-  def tv
+    def index
+        profile = Profile.new
+    end
+    
+    def tv
   end
 end
