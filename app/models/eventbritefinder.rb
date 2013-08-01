@@ -27,7 +27,6 @@ class Eventbritefinder
                 unless (!defined? reponse || response["error"].present?)
                     @data << response
                 end
-                debugger
 
             rescue RuntimeError
                 next
