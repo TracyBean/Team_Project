@@ -19,6 +19,6 @@ class Event < ActiveRecord::Base
   end
 
   def gmaps4rails_address
-  	"#{self.address}"
+    "#{self.address}"
   end
-
+end
